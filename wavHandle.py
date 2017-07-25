@@ -41,11 +41,24 @@ def main():
     # plt.ylabel('Power (dB)')
 
     plt.figure(2)
+
+    ax = plt.gca()  # 轴的编辑器
+    ax.spines["right"].set_color("none")  # 将right的边隐藏
+    ax.spines["top"].set_color("none")
+    ax.spines["left"].set_position(("data", 0))  # 将left设置到0位置
+    ax.spines["bottom"].set_position(("data", 0))
+
     plt.plot(freqArray, dB, color='k')
     plt.xlabel('Frequency (kHz)')
     plt.ylabel('Power (dB)')
 
     a = np.where(dB == np.max(dB))[0][0]
+
+    plt.plot([freqArray[a], freqArray[a]], [0, np.max(dB)], "y", linewidth=1, linestyle="--")
+
+    x = np.linspace(0, 200, 200, endpoint=True)
+    y = np.linspace(3, 3, 200, endpoint=True)
+    plt.plot(x, y, color="blue", linewidth=2.0, linestyle="--", alpha=0.5)
 
     plt.annotate((freqArray[a], np.max(dB)), xy=(freqArray[a], np.max(dB)), xycoords="data", xytext=(+10, +30),
                  textcoords="offset points",
