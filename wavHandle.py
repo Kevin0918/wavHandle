@@ -64,6 +64,12 @@ def main():
                  textcoords="offset points",
                  arrowprops=dict(arrowstyle="->", connectionstyle="arc3, rad = .2"))
 
+    plt.annotate("y=3dB", xy=(200, 3), xycoords="data", xytext=(+10, +20),
+                 textcoords="offset points",
+                 arrowprops=dict(arrowstyle="->", connectionstyle="arc3, rad = .2"))
+
+    plt.scatter(freqArray, dB, c='r', alpha=.5)
+
     plt.show()
 
     print(freqArray[a], np.max(dB))
